@@ -1,0 +1,58 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right, blue, purple);
+}
+
+header h1 {
+    color: white;
+    font-size: 2em;
+}
+
+main .team {
+    justify-content: center;
+    margin: 10px;
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;   
+}
+
+main .team .card {
+    margin: 10px;
+    width: 25%;
+    border-radius: 5px;
+    box-shadow: 5px 5px #ccc;
+    background-color: #eee;
+    padding: 10px;
+}
+
+main .team .card .card-header {
+    background-color: '#999';
+    color: black;
+    font-size: 1.2em;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+main .team .card .card-header a {
+    color: black;
+}
+
+@media screen and (max-width: 600px) {
+    main .team .card {
+        width: 92%;
+    }
+
+    main .team {
+        flex-direction: column;
+    }
+}   
