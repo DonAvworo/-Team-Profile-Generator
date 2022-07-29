@@ -38,6 +38,7 @@ class Employee {
     // }
   }
   
+  //test if the class is working by console.log
   let employee = new Employee('John', 'Smith', 123); // create a new employee object with the given properties and methods and assign it to the variable employee
   console.log(employee.getName()); // returns 'John Smith' (the full name of the employee) 
   console.log(employee instanceof Employee); // returns true (because Employee is the constructor function) \\in otherwords instanceof returns true if the object is an instance of the constructor function
