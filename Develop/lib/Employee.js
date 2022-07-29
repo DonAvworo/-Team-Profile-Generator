@@ -2,7 +2,7 @@
 
 //constructor function for the employee class
 class Employee {
-    constructor(firstName, lastName, id, email, gitHub) { // constructor function for the employee class with the following properties and methods (firstName, lastName, id)
+    constructor(firstName, lastName, id, email, gitHub) {  
       this.firstName = firstName; // this. notation is used to access the properties and methods of the class
       this.lastName = lastName;
       this.id = id;
