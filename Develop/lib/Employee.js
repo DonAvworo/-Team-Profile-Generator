@@ -2,10 +2,12 @@
 
 //constructor function for the employee class
 class Employee {
-    constructor(firstName, lastName, id) { // constructor function for the employee class with the following properties and methods (firstName, lastName, id)
+    constructor(firstName, lastName, id, email, gitHub) { // constructor function for the employee class with the following properties and methods (firstName, lastName, id)
       this.firstName = firstName; // this. notation is used to access the properties and methods of the class
       this.lastName = lastName;
       this.id = id;
+      this.email = email;
+      this.gitHub = gitHub;
     }
     
     // getName method for the employee class
@@ -17,6 +19,14 @@ class Employee {
     getId() {
       return this.id; // return the id property of the class
     }
+
+    getEmail() {
+      return this.email; // return the email property of the class
+    }
+
+    getGitHub() {
+      return this.gitHub; // return the gitHub property of the class
+    }
   }
   
   let employee = new Employee('John', 'Smith', 123); // create a new employee object with the given properties and methods and assign it to the variable employee
@@ -24,3 +34,4 @@ class Employee {
   console.log(employee instanceof Employee); // returns true (because Employee is the constructor function) \\in otherwords instanceof returns true if the object is an instance of the constructor function
 
   export default Employee; // export the Employee class so that it can be used in other files
+  // module.exports; // works the same as export default
