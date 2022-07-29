@@ -1,0 +1,19 @@
+
+create a class for the employee using the following properties and methods:
+
+Properties: //in oop, properties are used to hold values for the object. ie store data
+
+firstName: string
+lastName: string
+id: number
+
+Methods: //in oop, methods are used to perform actions on the object. 
+
+getName: returns the full name of the employee
+getId: returns the id of the employee
+
+Example:
+
+var employee = new Employee('John', 'Smith', 123); // in oop, primitives are not classified as objects. the "new" keyword is used to create an object from a class containing the primitives.
+employee.getName(); // returns 'John Smith'
+employee.getId(); // returns 123
