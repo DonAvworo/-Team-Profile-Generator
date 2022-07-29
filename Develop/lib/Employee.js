@@ -27,6 +27,11 @@ class Employee {
     getGitHub() {
       return this.gitHub; // return the gitHub property of the class
     }
+
+    retrieveAll() {  // retrieveAll method for the employee class that returns the following properties and methods of the class. this will be used to display the properties of the class.
+      return `${this.getName()} ${this.getId()} ${this.getEmail()} ${this.getGitHub()}`; // return the getName, getId, getEmail, and getGitHub methods of the class using the ${} notation. 
+                                                                                          // the ${} notation is used to access the properties of the class and the back tick is used to create a string literal.
+    }
   }
   
   let employee = new Employee('John', 'Smith', 123); // create a new employee object with the given properties and methods and assign it to the variable employee
