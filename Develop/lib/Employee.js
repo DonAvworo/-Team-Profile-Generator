@@ -15,7 +15,7 @@ class Employee {
     }
   
     getId() {
-      return this.id;
+      return this.id; // return the id property of the class
     }
   }
   
