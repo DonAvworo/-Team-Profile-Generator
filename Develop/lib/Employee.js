@@ -2,12 +2,11 @@
 
 //constructor function for the employee class
 class Employee {
-    constructor(firstName, lastName, id, email, gitHub) {  
+    constructor(firstName, lastName, id, email, ) {  
       this.firstName = firstName; // this. notation is used to access the properties and methods of the class
       this.lastName = lastName;
       this.id = id;
       this.email = email;
-      this.gitHub = gitHub;
     }
     
     // getName method for the employee class
@@ -22,10 +21,6 @@ class Employee {
 
     getEmail() {
       return this.email; // return the email property of the class
-    }
-
-    getGitHub() {
-      return this.gitHub; // return the gitHub property of the class
     }
 
     getRole() { // getRole method for the employee class that returns the following properties and methods of the class. this will be used to display the properties of the class.

@@ -9,7 +9,6 @@ test ("the constructor function for the employee class with the following proper
     expect(employee.lastName).toBe("Smith");
     expect(employee.id).toBe(123);
     expect(employee.email).toBe("email");
-    expect(employee.gitHub).toBe("github"); 
 }
 );
 
@@ -18,7 +17,6 @@ test ("the constructor function for the employee class", () => {
     expect(employee.getName()).toBe("John Smith");
     expect(employee.getId()).toBe(123);
     expect(employee.getEmail()).toBe("email");
-    expect(employee.getGitHub()).toBe("github");
 }   
 );
 
