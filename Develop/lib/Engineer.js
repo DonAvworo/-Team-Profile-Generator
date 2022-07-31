@@ -2,7 +2,7 @@
 const Employee = require('./Employee'); 
 
 //here, the Engineer class is extending the Employee class and inheriting the properties and methods of the Employee class.
-// the extends keyword is used to extend the Employee class 
+// the extends keyword is used to extend the Employee class  ie. the engineer is an extension of the Employee class
 class Engineer extends Employee {
   constructor(firstName, lastName, id, email, gitHub) {
     super(firstName, lastName, id, email); // here the super keyword is used to access the properties and methods of the Employee class.
