@@ -1,4 +1,5 @@
-import Employee from "../lib/Employee";
+// import Employee from "../lib/Employee";
+const Employee = require("../lib/Employee");
 const employee = new Employee("John", "Smith", 123 ,"email", "github");
 
 /* test if the get method is working using the expect function and
