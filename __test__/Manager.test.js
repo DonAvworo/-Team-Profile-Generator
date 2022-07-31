@@ -1,6 +1,6 @@
 // import Manager from "../lib/Manager";
 const Manager = require("../lib/Manager");
-const manager = new Manager('Moe', 'Doe', 123, '@gmail.com', '077-123-4567');
+const manager = new Manager('Moe', 'Doe', 123, '077-123-4567');
 
 test("the constructor function for the manager class with the following properties (firstName, lastName, id), email, officeNumber", () => {
     expect(manager.firstName).toBe("Moe");
