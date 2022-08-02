@@ -7,12 +7,12 @@ const templateHelper = require('./src/generate-team');
 const render = require('./src/render').default;
 const path = require('path');
 const OUTPUT_DIR = path.resolve(__dirname, 'dist'); // path to output directory 
-const outputPath = path.join(OUTPUT_DIR, 'team.html'); // the path.join is used to join the OUTPUT_DIR and the file name team.html, so that the output file is team.html in the OUTPUT_DIR absolute path
+const outputPath = path.join(OUTPUT_DIR, 'template.html'); // TODO the path.join is used to join the OUTPUT_DIR and the file name team.html, so that the output file is team.html in the OUTPUT_DIR absolute path
 const employees = []; // array to store the employees objects created by the user which will be used to generate the team.html file by the render function 
 
 const questionPrompts = () => {
 
-  // prompt the user to enter the information about the employees
+  // TODO prompt the user to enter the information about the employees
   return inquirer.prompt([ 
     { type: 'input', 
       name: 'name', 
@@ -171,45 +171,57 @@ const questionPrompts = () => {
     // answers is an object that contains the answers of the user
     .then(answers => { 
       
-      //create a variable to contain the (imported from class eg Manager) role of the employee and assign it to the a new variable (manager) which is a new instance of the Manager class...
-      const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber); // create a new manager object using the user answers
-      const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github); // create a new engineer object using the user answers
-      const intern = new Intern(answers.name, answers.id, answers.email, answers.school); // create a new intern object using the user answers
-
-      // if the user selects Manager, then the following information will be added to the employees array using the push method
-     if (answers.role === 'Manager') { 
-        employees.push(manager); // ...the manager object is then added to the employees array using the push method
-    } 
+      // use the switch statement to determine the role of the employee and push the answers to the corresponding array
+      switch (answers.role) { 
+        case 'Manager': 
+        const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber); // create a new manager object using the user answers
+        employees.push(manager); // push the manager object to the team array
+        break; // break is used to end the switch statement
         
-    // if the user selects Engineer, then the following information will be added to the employees array using the push method
-    else if (answers.role === 'Engineer') {       
-        employees.push(engineer); // ...the engineer object is then added to the employees array using the push method
-    } 
+        case 'Engineer':
+        const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github); // create a new engineer object using the user answers
+        employees.push(engineer); // push the engineer object to the team array
+        break; 
         
-    // if the user selects Intern, then the following information will be added to the employees array
-    else {                                       
-        employees.push(intern); // ...the intern object is then added to the employees array using the push method
-    }
+        case 'Intern':
+        const intern = new Intern(answers.name, answers.id, answers.email, answers.school); // create a new intern object using the user answers
+        employees.push(intern); // push the intern object to the team array
+        break;
 
-  });
+        //the render function is created in global scope and called in here
+        case 'Publish': // if the user selects publish, then the team array will be printed
+        console.log('Thanks for using the team generator app'); // print the message
+        render();
+        break
 
-  
-  //TODO the render function is used to render the html file using the employees array
-  function render() {
-    const html = renderHtml(employees);
-      if (fs.existsSync('./index.html')) { // if the file exists, then the file will be deleted and the new file will be created with the new information
-          fs.unlinkSync('./index.html'); // if the file exists, then delete it and create a new file with the new information using the writeFileSync method
+        default: // if user enters invalid command, then the default case will be executed
+        console.log('Thanks for using the team generator app'); // print the message
+        return; // return is used to end the function
+
+        case 'exit': // if the user selects exit, then the program will end and the team array will be printed
+        console.log('Thanks for using the team generator app'); // print the message
+        return; // return is used to end the function
       }
-      fs.writeFileSync('./index.html', html, 'utf8'); // write the new file with the new information
+    })
+    .catch(err => { // if the user enters an invalid input, then the program will end and the team array will be printed
+      console.log('An error have occured. Please make sure you enter valid input and try again.'); // print the message
+      return; // return is used to end the function
     }
+  );
+}
 
+// the render function is used to render the html file using the employees array this is called in the main function and is used to render the html file 
+function render() {
+  const html = renderHtml(employees);
+  fs.writeFileSync(outputPath, html);
+  fs.writeFileSync('./index.html', html, 'utf8'); // write the new file with the new information
 }
 
 // the questionPrompt function is called to complete the questions asked by the user
 questionPrompts();
 
-//
+// this is the main function that is called in the generate-team.js file
 templateHelper();
 
 // the render function is called to render the html file using the employees array
-render(); 
+// render(); 

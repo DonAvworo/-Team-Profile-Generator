@@ -1,46 +1,74 @@
-// here a function is created to generate the team
-const generateTeam = () => { // generateTeam is a function that will be called when the user selects the generate team option
-  const team = []; // array to store the employees objects created by the user which will be used to generate the team.html file by the render function
-  for (let i = 0; i < 3; i++) { // loop to create 3 employees objects and store them in the team array  
-    team.push(generatePlayer()); // push the employee object to the team array
-  }
-  return team;
-}
 
-function templateHelper (employees) {
-    return employees.map(employee => { // map is a function/method that will be called for each element in the array
-        return ` 
-        
+export function renderHtml (employees) {
+
+
+    // filter the employees array to only include the employees with the role of manager
+    const managers = employees.filter(employee => employee.getRole() === 'Manager');
+    const managerHTML =
+        managers.map((manager)=> {
+            `
             <div class="card">
                 <div class="card-header">
                     <h2>Manager</h2>
-                    <p>Employee ID:${manager.answers.id}</p>
-                    <p>Email: <a href="mailto:manager@example.com">${manager.answers.email}</a></p>
-                    <p>Office Number: ${manager.answers.officeNumber}</p>
+                    <p>Employee ID:${manager.id}</p>
+                    <p>Email: <a href="mailto:manager@example.com">${manager.email}</a></p>
+                    <p>Office Number: ${manager.officeNumber}</p>
                 </div>
             </div>
+            ` //mind the backticks
+        }); 
+    
 
+    // filter the employees array to only include the employees with the role of engineer
+    const engineers = employees.filter(employee => employee.getRole() === 'Engineer');
+    const engineerHTML =
+        engineers.map((engineer)=> {
+            ` 
             <div class="card">
                 <div class="card-header">
                     <h2>Engineer</h2>
-                    <p>Employee ID: ${enginer.answers.id}</p>
-                    <p>Email: <a href="mailto:engineer@example.com">${engineer.answers.email}</a></p>
-                    <p>GitHub: <a href="https://github.com/engineer" target="_blank">${engineer.answers.github}</a></p>
+                    <p>Employee ID: ${enginer.id}</p>
+                    <p>Email: <a href="mailto:engineer@example.com">${engineer.email}</a></p>
+                    <p>GitHub: <a href="https://github.com/engineer" target="_blank">${engineer.github}</a></p>
                 </div>
             </div>
+            ` //mind the backticks
+        });
 
+    // filter the employees array to only include the employees with the role of intern
+    const interns = employees.filter(employee => employee.getRole() === 'Intern');
+    const internHTML =
+        interns.map((intern)=> {
+            `
             <div class="card">
                 <div class="card-header">
                     <h2>Intern</h2>
-                    <p>Employee ID: ${intern.answers.id}</p>
-                    <p>Email: <a href="mailto:intern@example.com">${intern.answers.email}</a></p>
-                    <p>School: ${intern.answers.school}</p>
+                    <p>Employee ID: ${intern.id}</p>
+                    <p>Email: <a href="mailto:intern@example.com">${intern.email}</a></p>
+                    <p>School: ${intern.school}</p>
                 </div>
             </div>
 
         ` // mind the backticks
-    }
+    }); 
 
-    ).join(''); // join is a function/method that will be called on the array of strings to create a single string
+    const template = fs.readFileSync ('./dist/template.html', 'utf8', (err, data) => { 
+        if (err) {
+            throw err;
+        }
+        return data;
+    });
+
+    // replace the placeholder with the managerHTML and engineerHTML and internHTML
+    /* ie. replace the {{manager}}, {{engineer}} and {{intern}} inside the template.html file, 
+    with the created variables, const managerHTML, const engineerHTML and const internHTML inside this file (the template literals) */
+    let finalHtml = template.replace('{{manager}}', managerHTML.join(''))
+        finalHtml.replace('{{engineer}}', engineerHTML.join(''))
+        finalHtml.replace('{{intern}}', internHTML.join('')); 
+
+    // write the finalHtml to the outputPath
+    // fs.writeFileSync(outputPath, finalHtml);
+    return (finalHtml);
+
 }
-return templateHelper(employees);
+// return templateHelper(employees);
