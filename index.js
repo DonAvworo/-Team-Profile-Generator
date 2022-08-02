@@ -4,7 +4,7 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require ('./lib/Intern');
 const templateHelper = require('./src/generate-team');
-const render = require('./src/render').default;
+//const render = require('./src/render').default;
 const path = require('path');
 const OUTPUT_DIR = path.resolve(__dirname, 'dist'); // path to output directory 
 const outputPath = path.join(OUTPUT_DIR, 'template.html'); // TODO the path.join is used to join the OUTPUT_DIR and the file name team.html, so that the output file is team.html in the OUTPUT_DIR absolute path
@@ -14,25 +14,11 @@ const questionPrompts = () => {
 
   // TODO prompt the user to enter the information about the employees
   return inquirer.prompt([ 
-    { type: 'input', 
-      name: 'name', 
-      message: 'Enter the name of the employee:' 
-    },
-
-    { type: 'input', 
-      name: 'id', 
-      message: 'Enter the id of the employee:' 
-    },
-
-    { type: 'input', 
-      name: 'email', 
-      message: 'Enter the email of the employee:' 
-    },
-
+ 
     { type: 'list', 
       name: 'role', 
       message: 'Enter the role of the employee: ', 
-      choices: ['Manager', 'Engineer', 'Intern'] // choices is an array of strings that will be used to display the choices to the user
+      choices: ['Manager', 'Engineer', 'Intern', 'Create'] // choices is an array of strings that will be used to display the choices to the user
     }, 
 
     // if the user selects Manager, then the following questions will be asked
