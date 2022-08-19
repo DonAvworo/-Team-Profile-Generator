@@ -6,7 +6,6 @@ const render = employees => {
     fs.writeFileSync(outputPath, html); // writeFileSync is used to write the html file to the outputPath
 }  
 
-
-return generateHTML = employees(); // return the generateHTML function
+return generateHTML = employees(); // return the generateHTML function to the main function
 
 export default render; // export the render function so that it can be used in other files

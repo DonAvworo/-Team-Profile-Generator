@@ -1,0 +1,27 @@
+{
+  "name": "week-10-homework",
+  "version": "1.0.0",
+  "description": "Team builder with HTML",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DonAvworo/week-10-homework.git"
+  },
+  "author": "Don Avworo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DonAvworo/week-10-homework/issues"
+  },
+  "homepage": "https://github.com/DonAvworo/week-10-homework#readme",
+  "dependencies": {
+    "inquirer": "^7.3.3",
+    "jest": "^28.1.3"
+  }
+}
